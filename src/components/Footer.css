@@ -1,0 +1,15 @@
+/* FOOTER */
+.footer {
+  background-color: #ccc;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  opacity: 0.9;
+}
+
+.footer > p {
+  text-align: center;
+  color: #000;
+}

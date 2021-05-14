@@ -1,0 +1,18 @@
+/* HOME */
+.landing-page {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 90%;
+  margin: 100px auto;
+  overflow: hidden;
+}
+
+.movie-card {
+  margin: 30px 30px 100px 30px;
+  max-width: 250px;
+}
+
+.movie-card > img {
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
