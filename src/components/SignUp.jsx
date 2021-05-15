@@ -10,7 +10,7 @@ import React from "react";
 //   return <div className="signup-page">This is the Sign up page</div>;
 // };
 
-const userDataBase = [];
+let userDataBase = []; // I dont honestly believe that I will ever need this since my data get sent to App.jsx
 
 // I NEED TO REFACTOR THIS FORM TO BE ABLE TO USE STATE AND STORE USER DATA
 class SignUp extends React.Component {
@@ -23,8 +23,7 @@ class SignUp extends React.Component {
       lastName: "",
       userName: "",
       email: "",
-      password1: "",
-      password2: "",
+      password: "",
     };
   }
 
@@ -46,11 +45,7 @@ class SignUp extends React.Component {
   };
   // I need a helper function for collecting and handling password input
   handlePasswordInputChange = (e) => {
-    this.setState({ password1: e.target.value });
-  };
-  // I need a helper function for collecting and handling confirm password input
-  handleConfirmPasswordInputChange = (e) => {
-    this.setState({ password2: e.target.value });
+    this.setState({ password: e.target.value });
   };
 
   // I need a helper function for handling form submission
@@ -59,17 +54,19 @@ class SignUp extends React.Component {
     userDataBase.push(this.state);
     console.log("I was submitted!");
     console.log(userDataBase);
+    // this.props.onSubmit(this.state);
+    this.props.onSubmit(userDataBase);
     this.setState({
       firstName: "",
       lastName: "",
       userName: "",
       email: "",
-      password1: "",
-      password2: "",
+      password: "",
     });
   };
 
-  // WRITE CODE SOMEWHERE HERE TO DO FORM VALIDATION ON THE PASSWORD DATA
+  // WRITE CODE SOMEWHERE HERE TO BE ABLE TO PASS USERDATABASE UP TO App.jsx
+  // HOW CAN I DO THAT??
 
   render() {
     return (
@@ -129,27 +126,12 @@ class SignUp extends React.Component {
                   name="password"
                   id="password"
                   onChange={this.handlePasswordInputChange}
-                  value={this.state.password1}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password2">Confirm Password</label>
-                <input
-                  type="password"
-                  name="pasword2"
-                  id="password2"
-                  onChange={this.handleConfirmPasswordInputChange}
-                  value={this.state.password2}
+                  value={this.state.password}
                 />
               </div>
               <button type="submit" className="btn">
                 Sign Up
               </button>
-              {/* <p className="bottom-text">
-                By clicking the Sign Up button, you agree to our
-                <a href="#">Terms & Conditions</a> and
-                <a href="#">Privacy Policy</a>
-              </p> */}
             </form>
           </div>
           <footer>

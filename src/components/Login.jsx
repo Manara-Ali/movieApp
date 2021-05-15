@@ -22,6 +22,12 @@ class Login extends React.Component {
     };
   }
 
+  // Verify Login information
+  verifyCredentials = () => {
+    console.log("verifying credentials");
+    console.log(this.props.loginInfo);
+  };
+
   // I need a helper function for handling username
   handleLoginNameInputChange = (e) => {
     this.setState({ loginName: e.target.value });
@@ -38,6 +44,7 @@ class Login extends React.Component {
     console.log("I am logged in!");
     console.log(this.state.loginName, this.state.loginPassword);
     // write code to verify username and password with users in our database
+    this.verifyCredentials();
   };
 
   render() {

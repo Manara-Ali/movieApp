@@ -31,6 +31,8 @@ const homeMovieData = [
   "captain america: civil war",
 ];
 
+let dataBaseHardCopy = [];
+
 class App extends React.Component {
   // Inherit from the react class
   constructor(props) {
@@ -40,6 +42,7 @@ class App extends React.Component {
     this.state = {
       movieList: [],
       movieSeach: "",
+      dataBase: [],
     };
   }
 
@@ -87,6 +90,26 @@ class App extends React.Component {
     console.log(this.state.movieSeach);
   };
 
+  //    CREATE A CALL BACK FUNCTION TO COLLECT USER INFORMATION ON SIGN UP
+  onSignUp = (signupInfo) => {
+    console.log(signupInfo);
+    dataBaseHardCopy.push(signupInfo);
+    this.setState({
+      dataBase: dataBaseHardCopy.map((element) => {
+        return element;
+      }),
+    });
+    console.log(this.state.dataBase);
+
+    //   Retrieve the signup information from the sign up form component
+    // this.setState({
+    //   // Set this information in state
+    //   dataBase: this.state.dataBase.push(signupInfo),
+    // });
+    // Make a copy of the user to keep outside of this function
+    // dataBaseHardCopy = this.state.dataBase;
+  };
+
   render() {
     return (
       // Using React Browser Router to set up the routes for my application
@@ -114,8 +137,14 @@ class App extends React.Component {
                 />
               )}
             />
-            <Route path="/login" render={() => <Login />} />
-            <Route path="/sign-up" render={() => <SignUp />} />
+            <Route
+              path="/login"
+              render={() => <Login loginInfo={dataBaseHardCopy} />}
+            />
+            <Route
+              path="/sign-up"
+              render={() => <SignUp onSubmit={this.onSignUp} />}
+            />
           </Switch>
           <Footer />
         </div>
